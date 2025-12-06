@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Trucklord — Refurbished Trucks (Oshodi, Lagos)</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <meta name="description" content="Trucklord — Refurbished Howo & Sino trucks (Oshodi, Lagos). Browse stock and order via WhatsApp." />
+
+  <style>
+    :root{
+      --brand-yellow: #f6c100;
+      --nav-silver: #c0c0c0;
+      --muted-text-dark: #94a3b8;
+      --card-border: rgba(255,255,255,0.06);
+      --bg-dark-1: #03060a;
+      --bg-dark-2: #071226;
+      --glass: rgba(255,255,255,0.02);
+      --btn-radius: 12px;
+    }
+
+    html[data-bs-theme="dark"] { background: linear-gradient(180deg,var(--bg-dark-1),var(--bg-dark-2)); color: #eaf0f8; }
+    html[data-bs-theme="light"] { background: #f6f9fc; color: #07121b; }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 1080;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.06));
+    }
+    html[data-bs-theme="light"] .site-header { background: rgba(255,255,255,0.8); }
+
+    .brand-logo {
+      height: 42px;
+      width: auto;
+    }
+    .nav-link-custom { color: var(--nav-silver); font-weight:600; }
+    .nav-link-custom:hover, .nav-link-custom:focus { color: #fff; text-decoration: none; }
+    .nav-link-custom.active { color: var(--brand-yellow); font-weight:700; }
+
+    .btn-brand {
+      background: var(--brand-yellow);
+      color: #07121b;
+      border-radius: var(--btn-radius);
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+      border: 0;
+    }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: inherit;
+      border-radius: .6rem;
+    }
+
+    .hero { padding-top: 140px; }
+
+    #hero-slider { 
+      min-height: 260px; 
+      border-radius: 14px; 
+      background-size:cover; 
+      background-position:center; 
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6); 
+    }
+
+    .truck-card { background: linear-gradient(180deg,rgba(255,255,255,0.015),rgba(255,255,255,0.01)); border:1px solid var(--card-border); padding:12px; border-radius:12px; height:100%; display:flex; flex-direction:column; justify-content:space-between; }
+    .truck-image { height:170px; object-fit:cover; border-radius:8px; }
+
+    /* BIGGER & CLEARER GALLERY */
+    .gallery-wrap{ 
+      position:relative; 
+      overflow:hidden; 
+      height:320px; 
+      border-radius:16px; 
+      background: rgba(255,255,255,0.03);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .gallery-track{ 
+      display:flex; 
+      gap:24px; 
+      align-items:center; 
+      height:100%; 
+      animation: galleryFloat 18s linear infinite; 
+    }
+    .why{
+        text-decoration: none;
+        color: rgb(225, 225, 47);
+    }
+    .gallery-track img{ 
+      width:380px; 
+      height:300px; 
+      object-fit:cover; 
+      border-radius:14px; 
+      display:block;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      transition: transform 0.3s;
+    }
+    .gallery-track img:hover {
+      transform: scale(1.05);
+    }
+    @keyframes galleryFloat { 
+      0%{transform:translateX(100%)} 
+      100%{transform:translateX(-100%)} 
+    }
+
+    .test-wrap{ position:relative; overflow:hidden; height:170px; border-radius:12px; }
+    .test-track{ display:flex; gap:16px; align-items:center; height:100%; animation: testFloat 30s linear infinite; }
+    .testimonial{ min-width:290px; padding:18px; border-radius:10px; background:var(--glass); box-shadow:0 8px 24px rgba(2,6,23,0.55); }
+    @keyframes testFloat { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+
+    .faq-item{ border-radius:8px; padding:12px; border:1px solid var(--card-border); background:transparent; cursor:pointer; }
+    footer{ border-top:1px solid var(--card-border); margin-top:2.5rem; padding:1.25rem 0; }
+
+    .wa-fab{
+      position:fixed; right:1rem; bottom:1rem; z-index:1095;
+      border-radius:999px; box-shadow:0 8px 24px rgba(2,6,23,0.4);
+      padding:12px 16px; display:inline-flex; align-items:center; gap:10px; font-weight:700;
+      background:#25D366; color:#02111a;
+    }
+
+    .reveal { opacity:0; transform:translateY(18px); transition:all .7s cubic-bezier(.2,.9,.2,1); }
+    .reveal.show { opacity:1; transform:none; }
+
+    @media (max-width:767px){
+      .truck-image{ height:140px; }
+      .gallery-wrap { height:220px; }
+      .gallery-track img{ width:240px; height:200px; }
+      .test-track .testimonial{ min-width:220px; }
+    }
+
+    @media (max-width: 991.98px) {
+      .offcanvas { height: 100vh !important; max-height: 100vh; }
+      .offcanvas-body { overflow-y: hidden !important; padding: 2rem 1.5rem; display: flex; flex-direction: column; justify-content: space-between; }
+      .mobile-nav-links { display: flex; flex-direction: column; gap: 1.8rem; font-size: 1.4rem; margin-bottom: 3rem; }
+      .mobile-bottom-actions { display: flex; flex-direction: column; gap: 1rem; }
+      .brand-logo { height: 38px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER - Logo instead of text -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md container align-items-center" aria-label="Primary navigation">
+      <a class="navbar-brand mb-0" href="#">
+        <img src="logo.jpg" alt="Trucklord Logo" class="brand-logo">
+      </a>
+
+      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav">
+        <i class="bi bi-list" style="font-size:1.7rem;color:var(--nav-silver)"></i>
+      </button>
+
+      <!-- Desktop Nav -->
+      <div class="collapse navbar-collapse justify-content-center d-none d-md-flex">
+        <ul class="navbar-nav gap-3">
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="why.html">Why Choose Us</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="#faq">FAQ</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="#testimonials">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="d-none d-md-flex align-items-center gap-2 ms-auto">
+        <button id="theme-toggle" class="btn btn-ghost px-3 py-2" title="Toggle light/dark">
+          <i id="theme-icon" class="fa fa-moon" aria-hidden="true"></i>
+        </button>
+       
+      </div>
+    </nav>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel">
+      <div class="offcanvas-header border-bottom">
+        <h5 id="mobileNavLabel" class="mb-0 fw-bold text-warning">
+          <img src="logo.jpg" alt="Trucklord Logo" class="brand-logo" style="height:36px;">
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+
+      <div class="offcanvas-body">
+        <nav class="mobile-nav-links">
+          <a class="why" href="why.html" >Why Choose Us</a>
+          <a class="nav-link nav-link-custom" href="#about" data-bs-dismiss="offcanvas">About</a>
+          <a class="nav-link nav-link-custom" href="#gallery" data-bs-dismiss="offcanvas">Gallery</a>
+          <a class="nav-link nav-link-custom" href="#faq" data-bs-dismiss="offcanvas">FAQ</a>
+          <a class="nav-link nav-link-custom" href="#testimonials" data-bs-dismiss="offcanvas">Testimonials</a>
+          <a class="nav-link nav-link-custom" href="#contact" data-bs-dismiss="offcanvas">Contact</a>
+        </nav>
+
+        <div class="mobile-bottom-actions">
+          <button id="mobile-theme-toggle" class="btn btn-outline-light w-100">Toggle Theme</button>
+          <a class="btn btn-brand w-100" href="https://wa.me/2349122652974" target="_blank">Chat on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container hero py-4">
+
+    <!-- HERO -->
+    <section style="padding-top: 50px;" class="row align-items-center g-4 reveal" aria-label="Hero">
+      <div class="col-md-6">
+        <h1 class="display-6 fw-bold">Refurbished Sino &amp; Howo Trucks — Built for Power, Restored for Glory</h1>
+        <p class="text-muted mb-3">We refurbish heavy trucks in Oshodi, Lagos. Contact us to see current stock or request a live walk-through.</p>
+        <div class="d-flex gap-2 flex-wrap mb-3">
+          <a href="why.html" class="btn btn-brand">Why Choose Us</a>
+          <a href="#contact" class="btn btn-ghost">Contact Us</a>
+        </div>
+        <div class="d-flex gap-3 mt-3">
+          <div class="p-3 rounded" style="border:1px solid var(--card-border);">
+            <div class="small text-muted">Trucks Sold</div>
+            <div class="h4 fw-bold" id="mini-counter-1">0</div>
+          </div>
+          <div class="p-3 rounded" style="border:1px solid var(--card-border);">
+            <div class="small text-muted">Happy Clients</div>
+            <div class="h4 fw-bold" id="mini-counter-2">100%</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div id="hero-slider" class="rounded" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="mt-5 p-4 rounded reveal" style="border:1px solid var(--card-border);">
+      <h3>About Trucklord</h3>
+      <p class="text-muted">Located in Oshodi, Lagos, Trucklord sources proven Howo &amp; Sino heavy trucks and performs mechanical, chassis, electrical and cosmetic refurbishment so each vehicle leaves our yard roadworthy.</p>
+      <div class="row mt-3">
+        <div class="col-md-6 text-muted">Our skilled technicians conduct full engine overhauls, suspension renewal, electrical inspections, and structural reinforcement where necessary. We keep a strong focus on safety and reliability — every truck receives a road-test and final quality check before it is cleared for sale.</div>
+        <div class="col-md-6 text-muted">We offer inspection options, live video walk-throughs for remote buyers, and nationwide delivery with insured logistics. For fleet buyers we provide tailored maintenance and parts-sourcing support to keep your vehicles operational for longer.</div>
+      </div>
+    </section>
+
+    <!-- GALLERY - NOW BIGGER & CLEARER -->
+    <section id="gallery" class="mt-5 reveal">
+      <h3>Gallery</h3>
+      <div class="gallery-wrap mt-4">
+        <div class="gallery-track" role="list">
+          <img src="img-1.jpg" alt="Truck image 1" loading="lazy" role="listitem">
+          <img src="img-2.jpg" alt="Truck image 2" loading="lazy" role="listitem">
+          <img src="img-3.jpg" alt="Truck image 3" loading="lazy" role="listitem">
+          <img src="img-4.jpg" alt="Truck image 4" loading="lazy" role="listitem">
+          <img src="img-5.jpg" alt="Truck image 5" loading="lazy" role="listitem">
+          <img src="img-6.jpg" alt="Truck image 6" loading="lazy" role="listitem">
+          <img src="img-7.jpg" alt="Truck image 7" loading="lazy" role="listitem">
+          <img src="img-8.jpg" alt="Truck image 8" loading="lazy" role="listitem">
+          <img src="img-9.jpg" alt="Truck image 9" loading="lazy" role="listitem">
+          <img src="img-10.jpg" alt="Truck image 10" loading="lazy" role="listitem">
+          <!-- Duplicate for seamless loop -->
+          <img src="img-1.jpg" alt="Truck image 1" loading="lazy" role="listitem">
+          <img src="img-2.jpg" alt="Truck image 2" loading="lazy" role="listitem">
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="mt-5 reveal" style="border:1px solid var(--card-border); padding:1rem; border-radius:10px;">
+      <h3>Frequently Asked Questions</h3>
+      <div class="mt-3" id="faq-list">
+        <div class="faq-item mb-2" data-id="q1" tabindex="0" aria-expanded="false">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="fw-semibold">What is the condition of the trucks?</div>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer text-muted mt-2" hidden>All trucks are fully inspected and refurbished to high standards. We replace worn parts, recondition engines where necessary, and run road tests before delivery.</div>
+        </div>
+        <div class="faq-item mb-2" data-id="q2" tabindex="0" aria-expanded="false">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="fw-semibold">Do you deliver nationwide?</div>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer text-muted mt-2" hidden>Yes — we deliver across Nigeria. We offer insured logistics and can arrange transport from Oshodi to your state.</div>
+        </div>
+        <div class="faq-item mb-2" data-id="q3" tabindex="0" aria-expanded="false">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="fw-semibold">Can I inspect before purchase?</div>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer text-muted mt-2" hidden>Yes. Inspections can be arranged at our yard in Oshodi. We can also do live video walk-throughs and provide inspection reports for remote buyers.</div>
+        </div>
+        <div class="faq-item mb-2" data-id="q4" tabindex="0" aria-expanded="false">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="fw-semibold">What payment methods do you accept?</div>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer text-muted mt-2" hidden>We accept bank transfers and verified escrow services. For local purchases, we can discuss convenient payment plans — contact us on WhatsApp to discuss.</div>
+        </div>
+        <div class="faq-item mb-2" data-id="q5" tabindex="0" aria-expanded="false">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="fw-semibold">Do you offer after-sales support?</div>
+            <div class="faq-toggle">+</div>
+          </div>
+          <div class="faq-answer text-muted mt-2" hidden>Yes — we provide post-purchase support for maintenance, spare-parts sourcing, and advice on upkeep.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="mt-5 reveal">
+      <h3>What clients say</h3>
+      <div class="test-wrap mt-3">
+        <div class="test-track" role="list">
+          <div class="testimonial" role="listitem">“Trucklord transformed our fleet — trucks feel brand new.” <div class="text-muted small mt-2">— Michael A., Fleet Manager</div></div>
+          <div class="testimonial" role="listitem">“Excellent refurbishment and smooth delivery.” <div class="text-muted small mt-2">— Ngozi K., Logistics Director</div></div>
+          <div class="testimonial" role="listitem">“Great communication and professional service.” <div class="text-muted small mt-2">— Emeka O., Emeka Haulage</div></div>
+          <div class="testimonial" role="listitem">“Reliable trucks and fair treatment.” <div class="text-muted small mt-2">— Fatima S., Operations Lead</div></div>
+          <div class="testimonial" role="listitem">“Fast response and excellent quality.” <div class="text-muted small mt-2">— Kemi T., Transport Manager</div></div>
+          <div class="testimonial" role="listitem">“Highly recommended for commercial fleet needs.” <div class="text-muted small mt-2">— David U., Business Owner</div></div>
+        </div>
+      </div>
+      </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="mt-5 reveal" style="border:1px solid var(--card-border); padding:1rem; border-radius:10px;">
+      <h3>Contact & Location — Oshodi, Lagos</h3>
+      <div class="row mt-3">
+        <div class="col-md-6">
+          <p class="text-muted">Trucklord Yard — Oshodi, Lagos<br>WhatsApp: <a class="text-decoration-none" href="https://wa.me/2349122652974">+234 912 265 2974</a></p>
+          <form id="contact-form" class="mt-3" aria-label="Contact form">
+            <div class="mb-2"><label class="visually-hidden" for="cf-name">Your name</label><input id="cf-name" name="name" class="form-control form-control-sm bg-transparent text-light" placeholder="Your name" required></div>
+            <div class="mb-2"><label class="visually-hidden" for="cf-contact">Contact</label><input id="cf-contact" name="contact" class="form-control form-control-sm bg-transparent text-light" placeholder="Phone or email" required></div>
+            <div class="mb-2"><label class="visually-hidden" for="cf-message">Message</label><textarea id="cf-message" name="message" rows="4" class="form-control form-control-sm bg-transparent text-light" placeholder="Message" required></textarea></div>
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-brand">Send Message</button>
+              <a id="wa-btn" href="https://wa.me/2349122652974" target="_blank" class="btn btn-ghost">Chat</a>
+            </div>
+            <div id="contact-feedback" class="text-muted small mt-2" aria-live="polite"></div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div class="h-100 rounded overflow-hidden border" style="border-color:var(--card-border); min-height:220px;">
+            <iframe class="w-100 h-100 rounded" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.927391259451!2d3.3355556147695!3d6.555555495279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8e5c5e5c5e5c%3A0x5e5c5e5c5e5c5e5c!2sOshodi%2C%20Lagos!5e0!3m2!1sen!2sng!4v1698765432100" title="Oshodi map"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+      <div>
+        <img src="logo.jpg" alt="Trucklord" class="brand-logo me-2" style="height:32px;">
+        <span class="fw-bold">TRUCKLORD</span>
+        <div class="small text-muted">© Trucklord — Refurbished Trucks • Oshodi, Lagos</div>
+      </div>
+      <div class="d-flex gap-3">
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="text-decoration-none text-muted"><i class="fab fa-twitter"></i></a>
+        <a href="https://wa.me/2349122652974" target="_blank" aria-label="WhatsApp" class="text-decoration-none text-muted"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="text-decoration-none text-muted"><i class="fab fa-facebook"></i></a>
+      </div>
+      <div class="small text-muted">Built by Stella</div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp FAB -->
+  <a id="wa-fab" class="wa-fab" href="https://wa.me/2349122652974" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    <span class="d-none d-md-inline">Chat Trucklord</span>
+  </a>
+
+  <!-- Bootstrap JS + Custom Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function () {
+      const PHONE = '2349122652974';
+
+      // Theme toggle
+      const htmlEl = document.documentElement;
+      const THEME_KEY = 'trucklord-theme';
+      const saved = localStorage.getItem(THEME_KEY) || 'dark';
+      function applyTheme(theme){
+        htmlEl.setAttribute('data-bs-theme', theme);
+        localStorage.setItem(THEME_KEY, theme);
+        document.getElementById('theme-icon').className = theme === 'dark' ? 'fa fa-moon' : 'fa fa-sun';
+      }
+      applyTheme(saved);
+      document.getElementById('theme-toggle')?.addEventListener('click', () => applyTheme(htmlEl.getAttribute('data-bs-theme')==='dark' ? 'light' : 'dark'));
+      document.getElementById('mobile-theme-toggle')?.addEventListener('click', () => applyTheme(htmlEl.getAttribute('data-bs-theme')==='dark' ? 'light' : 'dark'));
+
+      // Reveal on scroll
+      const reveals = document.querySelectorAll('.reveal');
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
+      }, { threshold: 0.12 });
+      reveals.forEach(el => obs.observe(el));
+
+      // Hero background slider
+      const hero = document.getElementById('hero-slider');
+      const heroImgs = ['img-1.jpg','img-2.jpg','img-3.jpg'];
+      let hIdx = 0;
+      function showHero(i){ 
+        hero.style.backgroundImage = `linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.1)), url(${heroImgs[i]})`; 
+      }
+      showHero(0);
+      setInterval(() => { hIdx = (hIdx+1) % heroImgs.length; showHero(hIdx); }, 4500);
+
+      // Contact form → WhatsApp
+      const contactForm = document.getElementById('contact-form');
+      contactForm.addEventListener('submit', (ev) => {
+        ev.preventDefault();
+        const name = document.getElementById('cf-name').value.trim();
+        const contact = document.getElementById('cf-contact').value.trim();
+        const message = document.getElementById('cf-message').value.trim();
+        const text = `Hello Trucklord, my name is ${name}. Contact: ${contact}. Message: ${message}`;
+        document.getElementById('contact-feedback').textContent = 'Opening WhatsApp...';
+        window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+      });
+
+      // Mini counters
+      let sold = 0;
+      const soldEl = document.getElementById('mini-counter-1');
+      const sIv = setInterval(() => {
+        sold += Math.floor(Math.random()*3)+1;
+        soldEl.textContent = Math.min(sold, 128);
+        if(sold>=128) clearInterval(sIv);
+      }, 220);
+      document.getElementById('mini-counter-2').textContent = '100%';
+
+      // FAQ toggles
+      document.querySelectorAll('.faq-item').forEach(item => {
+        const toggle = item.querySelector('.faq-toggle');
+        const answer = item.querySelector('.faq-answer');
+        item.addEventListener('click', () => {
+          const open = item.getAttribute('aria-expanded') === 'true';
+          item.setAttribute('aria-expanded', !open);
+          answer.hidden = open;
+          toggle.textContent = open ? '+' : '-';
+        });
+        item.addEventListener('keydown', e => { if(e.key==='Enter' || e.key===' ') { e.preventDefault(); item.click(); } });
+      });
+    })();
+  </script>
+</body>
+</html>
