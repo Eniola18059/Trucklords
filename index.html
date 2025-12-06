@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="dark">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=11" />
   <title>Trucklord — Refurbished Trucks (Oshodi, Lagos)</title>
 
   <!-- Bootstrap CSS -->
@@ -26,8 +26,11 @@
       --btn-radius: 12px;
     }
 
-    html[data-bs-theme="dark"] { background: linear-gradient(180deg,var(--bg-dark-1),var(--bg-dark-2)); color: #eaf0f8; }
-    html[data-bs-theme="light"] { background: #f6f9fc; color: #07121b; }
+    /* Force dark mode only */
+    html, body {
+      background: linear-gradient(180deg,var(--bg-dark-1),var(--bg-dark-2)) !important;
+      color: #eaf0f8 !important;
+    }
 
     /* Header */
     .site-header {
@@ -37,7 +40,6 @@
       backdrop-filter: blur(6px);
       background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.06));
     }
-    html[data-bs-theme="light"] .site-header { background: rgba(255,255,255,0.8); }
 
     .brand-logo {
       height: 42px;
@@ -72,15 +74,26 @@
       box-shadow: 0 8px 30px rgba(2,6,23,0.6); 
     }
 
-    .truck-card { background: linear-gradient(180deg,rgba(255,255,255,0.015),rgba(255,255,255,0.01)); border:1px solid var(--card-border); padding:12px; border-radius:12px; height:100%; display:flex; flex-direction:column; justify-content:space-between; }
-    .truck-image { height:170px; object-fit:cover; border-radius:8px; }
-.brand {
-      font-weight: 900;
-      font-size: 1.8rem;
-      color: #000;
+    .truck-card { 
+      background: linear-gradient(180deg,rgba(255,255,255,0.015),rgba(255,255,255,0.01)); 
+      border:1px solid var(--card-border); 
+      padding:12px; 
+      border-radius:12px; 
+      height:100%; 
+      display:flex; 
+      flex-direction:column; 
+      justify-content:space-between; 
+      
     }
 
-    /* Gallery Section */
+    .truck-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 8px;
+      padding-bottom: 10px;
+    }
+
     .gallery-header {
       text-align: center;
       margin: 120px 0 50px;
@@ -105,81 +118,58 @@
     }
 
     .filter-tabs .btn.active {
-      background: var(--yellow);
-      border-color: var(--yellow);
+      background: var(--brand-yellow);
+      border-color: var(--brand-yellow);
       color: #000;
     }
-    .card-body a{
-        background-color: ;
-    }
 
-    .truck-card {
-      background: #fff;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: var(--card-shadow);
-      transition: all 0.3s ease;
-      height: 100%;
-    }
+    .why { color:#f6c100; text-decoration: none; }
+    .mo-links { color: white; text-decoration: none; }
 
-    .truck-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-    }
-
-    .truck-card img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-    }
-
-    .card-body {
-      padding: 1.5rem;
-    }
-    .why{
-        color:#f6c100;
-        text-decoration: none;
-    }
-   
-
-    .mo-links{
-        color: white;
-        text-decoration: none;
-    }
-    
+    /* WhatsApp button = GREEN */
     .btn-whatsapp {
-      background: var(--yellow);
-      color: #000;
+      background: #25D366 !important;
+      color: #fff !important;
       font-weight: 700;
       border-radius: 12px;
       padding: 10px 16px;
       border: none;
     }
-
     .btn-whatsapp:hover {
-      background: var(--yellow-hover);
-      color: #000;
+      background: #128C7E !important;
     }
 
-    .btn-details {
-      background: transparent;
-      color: var(--gray-btn);
-      border: 1px solid #ddd;
+    /* FIXED: Smooth infinite testimonial scroll - no gap */
+    .test-wrap {
+      position: relative;
+      overflow: hidden;
+      height: 170px;
+      border-radius: 12px;
+    }
+    .test-track {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      height: 100%;
+      animation: testFloat 40s linear infinite;
+    }
+    .testimonial {
+      min-width: 290px;
+      padding: 18px;
       border-radius: 10px;
-      padding: 10px 16px;
-      font-weight: 600;
+      background: var(--glass);
+      box-shadow: 0 8px 24px rgba(2,6,23,0.55);
+      flex-shrink: 0;
+    }
+    @keyframes testFloat {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
     }
 
-   
-    .test-wrap{ position:relative; overflow:hidden; height:170px; border-radius:12px; }
-    .test-track{ display:flex; gap:16px; align-items:center; height:100%; animation: testFloat 30s linear infinite; }
-    .testimonial{ min-width:290px; padding:18px; border-radius:10px; background:var(--glass); box-shadow:0 8px 24px rgba(2,6,23,0.55); }
-    @keyframes testFloat { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+    .faq-item { border-radius:8px; padding:12px; border:1px solid var(--card-border); background:transparent; cursor:pointer; }
+    footer { border-top:1px solid var(--card-border); margin-top:2.5rem; padding:1.25rem 0; }
 
-    .faq-item{ border-radius:8px; padding:12px; border:1px solid var(--card-border); background:transparent; cursor:pointer; }
-    footer{ border-top:1px solid var(--card-border); margin-top:2.5rem; padding:1.25rem 0; }
-
-    .wa-fab{
+    .wa-fab {
       position:fixed; right:1rem; bottom:1rem; z-index:1095;
       border-radius:999px; box-shadow:0 8px 24px rgba(2,6,23,0.4);
       padding:12px 16px; display:inline-flex; align-items:center; gap:10px; font-weight:700;
@@ -190,15 +180,13 @@
     .reveal.show { opacity:1; transform:none; }
 
     @media (max-width:767px){
-      .truck-image{ height:140px; }
-      .gallery-wrap { height:220px; }
-      .gallery-track img{ width:240px; height:200px; }
-      .test-track .testimonial{ min-width:220px; }
+      .truck-card img { height:200px; }
+      .test-track .testimonial { min-width:220px; }
     }
 
     @media (max-width: 991.98px) {
       .offcanvas { height: 100vh !important; max-height: 100vh; }
-      .offcanvas-body { overflow-y: hidden !important; padding: 2rem 1.5rem; display: flex; flex-direction: column; justify-content: space-between; }
+      .offcanvas-body { padding: 2rem 1.5rem; display: flex; flex-direction: column; justify-content: space-between; }
       .mobile-nav-links { display: flex; flex-direction: column; gap: 1.8rem; font-size: 1.4rem; margin-bottom: 3rem; }
       .mobile-bottom-actions { display: flex; flex-direction: column; gap: 1rem; }
       .brand-logo { height: 38px; }
@@ -207,13 +195,14 @@
 </head>
 <body>
 
-  <!-- HEADER - Logo instead of text -->
+  <!-- HEADER -->
   <header class="site-header">
     <nav class="navbar navbar-expand-md container align-items-center" aria-label="Primary navigation">
       <a class="navbar-brand mb-0" href="#">
         <img src="logo.jpg" alt="Trucklord Logo" class="brand-logo">
       </a>
 
+      <!-- Hamburger Button -->
       <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav">
         <i class="bi bi-list" style="font-size:1.7rem;color:var(--nav-silver)"></i>
       </button>
@@ -229,13 +218,6 @@
           <li class="nav-item"><a class="nav-link nav-link-custom" href="#contact">Contact</a></li>
         </ul>
       </div>
-
-      <div class="d-none d-md-flex align-items-center gap-2 ms-auto">
-        <button id="theme-toggle" class="btn btn-ghost px-3 py-2" title="Toggle light/dark">
-          <i id="theme-icon" class="fa fa-moon" aria-hidden="true"></i>
-        </button>
-       
-      </div>
     </nav>
 
     <!-- Mobile Offcanvas Menu -->
@@ -249,29 +231,26 @@
 
       <div class="offcanvas-body">
         <nav class="mobile-nav-links">
-          <a class="why" href="why.html" >Why Choose Us</a>
-          <a class="mo-links" href="#about">About</a>
-          <a class="mo-links" href="#gallery">Gallery</a>
-          <a class="mo-links" href="#faq" >FAQ</a>
-          <a  class="mo-links" href="#testimonials" >Testimonials</a>
-          <a  class="mo-links" href="#contact">Contact</a>
+          <a class="why text-decoration-none fs-5" href="why.html">Why Choose Us</a>
+          <a class="mo-links text-decoration-none fs-5" href="#about">About</a>
+          <a class="mo-links text-decoration-none fs-5" href="#gallery">Gallery</a>
+          <a class="mo-links text-decoration-none fs-5" href="#faq">FAQ</a>
+          <a class="mo-links text-decoration-none fs-5" href="#testimonials">Testimonials</a>
+          <a class="mo-links text-decoration-none fs-5" href="#contact">Contact</a>
         </nav>
 
         <div class="mobile-bottom-actions">
-          <button id="mobile-theme-toggle" class="btn btn-outline-light w-100">Toggle Theme</button>
           <a class="btn btn-brand w-100" href="https://wa.me/2349122652974" target="_blank">Chat on WhatsApp</a>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
+  <!-- HERO -->
   <main class="container hero py-4">
-
-    <!-- HERO -->
-    <section style="padding-top: 50px;" class="row align-items-center g-4 reveal" aria-label="Hero">
+    <section style="padding-top: 50px;" class="row align-items-center g-4 reveal">
       <div class="col-md-6">
-        <h1 class="display-6 fw-bold">Refurbished Sino &amp; Howo Trucks — Built for Power, Restored for Glory</h1>
+        <h1 class="display-6 fw-bold">Refurbished Sino &amp; Howo Trucks — <span style="color: #f6c100 ;">Built for Power, Restored for Glory</span></h1>
         <p class="text-muted mb-3">We refurbish heavy trucks in Oshodi, Lagos. Contact us to see current stock or request a live walk-through.</p>
         <div class="d-flex gap-2 flex-wrap mb-3">
           <a href="why.html" class="btn btn-brand">Why Choose Us</a>
@@ -302,15 +281,14 @@
         <div class="col-md-6 text-muted">We offer inspection options, live video walk-throughs for remote buyers, and nationwide delivery with insured logistics. For fleet buyers we provide tailored maintenance and parts-sourcing support to keep your vehicles operational for longer.</div>
       </div>
     </section>
+  </main>
 
-  <!-- Main Gallery -->
+  <!-- GALLERY -->
   <main class="container">
-
     <div class="gallery-header">
       <h1 class="display-5 fw-bold">Available Trucks</h1>
     </div>
 
-    <!-- Filter Tabs -->
     <div class="filter-tabs">
       <button class="btn active" data-filter="all">All</button>
       <button class="btn" data-filter="tipper">Tipper</button>
@@ -319,143 +297,90 @@
       <button class="btn" data-filter="flatbed">Flatbed</button>
     </div>
 
-    <!-- Trucks Grid -->
     <div class="row g-4" id="truckGrid">
-
-      <!-- Truck 1 -->
+      <!-- All 10 trucks - View Details REMOVED, button GREEN -->
       <div class="col-12 col-md-6 col-lg-4 truck-item" data-category="tipper">
         <div class="truck-card">
           <img src="img-1.jpg" alt="Howo Tipper 371HP">
           <div class="card-body">
-            <div class="d-flex gap-2">
-              <a href="https://wa.me/2349122652974?text=I'm%20interested%20in%20Howo%20Tipper%20371HP%20(img-1)" class="btn btn-whatsapp flex-fill">Order via WhatsApp</a>
-              <a href="img-1.jpg" target="_blank" class="btn btn-details">View details</a>
-            </div>
+            <a href="https://wa.me/2349122652974?text=I'm%20interested%20in%20Howo%20Tipper%20371HP%20(img-1)" class="btn btn-whatsapp w-100">Order via WhatsApp</a>
           </div>
         </div>
       </div>
-
-      <!-- Truck 2 -->
       <div class="col-12 col-md-6 col-lg-4 truck-item" data-category="tanker">
         <div class="truck-card">
           <img src="img-2.jpg" alt="Sino Tanker">
           <div class="card-body">
-            <div class="d-flex gap-2">
-              <a href="https://wa.me/2349122652974?text=I'm%20interested%20in%20Sino%20Tanker%20(img-2)" class="btn btn-whatsapp flex-fill">Order via WhatsApp</a>
-              <a href="img-2.jpg" target="_blank" class="btn btn-details">View details</a>
-            </div>
+            <a href="https://wa.me/2349122652974?text=I'm%20interested%20in%20Sino%20Tanker%20(img-2)" class="btn btn-whatsapp w-100">Order via WhatsApp</a>
           </div>
         </div>
       </div>
-
-      <!-- Truck 3 -->
       <div class="col-12 col-md-6 col-lg-4 truck-item" data-category="tractor">
         <div class="truck-card">
           <img src="img-3.jpg" alt="Howo Tractor Head">
           <div class="card-body">
-            <div class="d-flex gap-2">
-              <a href="https://wa.me/2349122652974?text=I'm%20interested%20in%20Howo%20Tractor%20Head%20(img-3)" class="btn btn-whatsapp flex-fill">Order via WhatsApp</a>
-              <a href="img-3.jpg" target="_blank" class="btn btn-details">View details</a>
-            </div>
+            <a href="https://wa.me/2349122652974?text=I'm%20interested%20in%20Howo%20Tractor%20Head%20(img-3)" class="btn btn-whatsapp w-100">Order via WhatsApp</a>
           </div>
         </div>
       </div>
-
-      <!-- Truck 4 -->
       <div class="col-12 col-md-6 col-lg-4 truck-item" data-category="flatbed">
         <div class="truck-card">
           <img src="img-4.jpg" alt="Sino Flatbed">
           <div class="card-body">
-            <div class="d-flex gap-2">
-              <a href="https://wa.me/2349122652974?text=I'm%20interested%20in%20Sino%20Flatbed%20(img-4)" class="btn btn-whatsapp flex-fill">Order via WhatsApp</a>
-              <a href="img-4.jpg" target="_blank" class="btn btn-details">View details</a>
-            </div>
+            <a href="https://wa.me/2349122652974?text=I'm%20interested%20in%20Sino%20Flatbed%20(img-4)" class="btn btn-whatsapp w-100">Order via WhatsApp</a>
           </div>
         </div>
       </div>
-
-      <!-- Truck 5 -->
       <div class="col-12 col-md-6 col-lg-4 truck-item" data-category="tipper">
         <div class="truck-card">
           <img src="img-5.jpg" alt="Sino Tipper">
           <div class="card-body">
-            
-            <div class="d-flex gap-2">
-              <a href="https://wa.me/2349122652974?text=I'm%20interested%20in%20Sino%20Tipper%20Rugged%20(img-5)" class="btn btn-whatsapp flex-fill">Order via WhatsApp</a>
-              <a href="img-5.jpg" target="_blank" class="btn btn-details">View details</a>
-            </div>
+            <a href="https://wa.me/2349122652974?text=I'm%20interested%20in%20Sino%20Tipper%20Rugged%20(img-5)" class="btn btn-whatsapp w-100">Order via WhatsApp</a>
           </div>
         </div>
       </div>
-
-      <!-- Truck 6 to 10 — just repeat the same pattern -->
       <div class="col-12 col-md-6 col-lg-4 truck-item" data-category="tanker">
         <div class="truck-card">
           <img src="img-6.jpg" alt="Howo Tanker">
           <div class="card-body">
-           
-            <div class="d-flex gap-2">
-              <a href="https://wa.me/2349122652974?text=I'm%20interested%20in%20Howo%20Tanker%20(img-6)" class="btn btn-whatsapp flex-fill">Order via WhatsApp</a>
-              <a href="img-6.jpg" target="_blank" class="btn btn-details">View details</a>
-            </div>
+            <a href="https://wa.me/2349122652974?text=I'm%20interested%20in%20Howo%20Tanker%20(img-6)" class="btn btn-whatsapp w-100">Order via WhatsApp</a>
           </div>
         </div>
       </div>
-
-      <!-- Continue up to img-10.jpg the same way... -->
-      <!-- I’ve added all 10 below for you -->
-
       <div class="col-12 col-md-6 col-lg-4 truck-item" data-category="tipper">
         <div class="truck-card">
           <img src="img-7.jpg" alt="Truck 7">
           <div class="card-body">
-            
-            <div class="d-flex gap-2">
-              <a href="https://wa.me/2349122652974" class="btn btn-whatsapp flex-fill">Order via WhatsApp</a>
-              <a href="img-7.jpg" target="_blank" class="btn btn-details">View details</a>
-            </div>
+            <a href="https://wa.me/2349122652974" class="btn btn-whatsapp w-100">Order via WhatsApp</a>
           </div>
         </div>
       </div>
-
       <div class="col-12 col-md-6 col-lg-4 truck-item" data-category="tractor">
         <div class="truck-card">
           <img src="img-8.jpg" alt="Truck 8">
           <div class="card-body">
-           
-            <div class="d-flex gap-2">
-              <a href="https://wa.me/2349122652974" class="btn btn-whatsapp flex-fill">Order via WhatsApp</a>
-              <a href="img-8.jpg" target="_blank" class="btn btn-details">View details</a>
-            </div>
+            <a href="https://wa.me/2349122652974" class="btn btn-whatsapp w-100">Order via WhatsApp</a>
           </div>
         </div>
       </div>
-
       <div class="col-12 col-md-6 col-lg-4 truck-item" data-category="tanker">
         <div class="truck-card">
           <img src="img-9.jpg" alt="Truck 9">
           <div class="card-body">
-            <div class="d-flex gap-2">
-              <a href="https://wa.me/2349122652974" class="btn btn-whatsapp flex-fill">Order via WhatsApp</a>
-              <a href="img-9.jpg" target="_blank" class="btn btn-details">View details</a>
-            </div>
+            <a href="https: //wa.me/2349122652974" class="btn btn-whatsapp w-100">Order via WhatsApp</a>
           </div>
         </div>
       </div>
-
       <div class="col-12 col-md-6 col-lg-4 truck-item" data-category="flatbed">
         <div class="truck-card">
           <img src="img-10.jpg" alt="Truck 10">
           <div class="card-body">
-            <div class="d-flex gap-2">
-              <a href="https://wa.me/2349122652974" class="btn btn-whatsapp flex-fill">Order via WhatsApp</a>
-              <a href="img-10.jpg" target="_blank" class="btn btn-details">View details</a>
-            </div>
+            <a href="https://wa.me/2349122652974" class="btn btn-whatsapp w-100">Order via WhatsApp</a>
           </div>
         </div>
       </div>
-
     </div>
+
     <!-- FAQ -->
     <section id="faq" class="mt-5 reveal" style="border:1px solid var(--card-border); padding:1rem; border-radius:10px;">
       <h3>Frequently Asked Questions</h3>
@@ -498,7 +423,7 @@
       </div>
     </section>
 
-    <!-- TESTIMONIALS -->
+    <!-- TESTIMONIALS - Now smooth with no gap -->
     <section id="testimonials" class="mt-5 reveal">
       <h3>What clients say</h3>
       <div class="test-wrap mt-3">
@@ -509,9 +434,12 @@
           <div class="testimonial" role="listitem">“Reliable trucks and fair treatment.” <div class="text-muted small mt-2">— Fatima S., Operations Lead</div></div>
           <div class="testimonial" role="listitem">“Fast response and excellent quality.” <div class="text-muted small mt-2">— Kemi T., Transport Manager</div></div>
           <div class="testimonial" role="listitem">“Highly recommended for commercial fleet needs.” <div class="text-muted small mt-2">— David U., Business Owner</div></div>
+          <!-- Duplicated for seamless loop -->
+          <div class="testimonial" role="listitem">“Trucklord transformed our fleet — trucks feel brand new.” <div class="text-muted small mt-2">— Michael A., Fleet Manager</div></div>
+          <div class="testimonial" role="listitem">“Excellent refurbishment and smooth delivery.” <div class="text-muted small mt-2">— Ngozi K., Logistics Director</div></div>
         </div>
       </div>
-      </section>
+    </section>
 
     <!-- CONTACT -->
     <section id="contact" class="mt-5 reveal" style="border:1px solid var(--card-border); padding:1rem; border-radius:10px;">
@@ -562,24 +490,21 @@
     <span class="d-none d-md-inline">Chat Trucklord</span>
   </a>
 
-  <!-- Bootstrap JS + Custom Scripts -->
+  <!-- Bootstrap + Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
+    // Close mobile menu on any link click (including #anchors)
+    document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        const offcanvasElement = document.getElementById('mobileNav');
+        const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasElement);
+        if (bsOffcanvas) bsOffcanvas.hide();
+      });
+    });
+
+    // Rest of your original scripts
     (function () {
       const PHONE = '2349122652974';
-
-      // Theme toggle
-      const htmlEl = document.documentElement;
-      const THEME_KEY = 'trucklord-theme';
-      const saved = localStorage.getItem(THEME_KEY) || 'dark';
-      function applyTheme(theme){
-        htmlEl.setAttribute('data-bs-theme', theme);
-        localStorage.setItem(THEME_KEY, theme);
-        document.getElementById('theme-icon').className = theme === 'dark' ? 'fa fa-moon' : 'fa fa-sun';
-      }
-      applyTheme(saved);
-      document.getElementById('theme-toggle')?.addEventListener('click', () => applyTheme(htmlEl.getAttribute('data-bs-theme')==='dark' ? 'light' : 'dark'));
-      document.getElementById('mobile-theme-toggle')?.addEventListener('click', () => applyTheme(htmlEl.getAttribute('data-bs-theme')==='dark' ? 'light' : 'dark'));
 
       // Reveal on scroll
       const reveals = document.querySelectorAll('.reveal');
@@ -588,7 +513,7 @@
       }, { threshold: 0.12 });
       reveals.forEach(el => obs.observe(el));
 
-      // Hero background slider
+      // Hero slider
       const hero = document.getElementById('hero-slider');
       const heroImgs = ['img-1.jpg','img-2.jpg','img-3.jpg'];
       let hIdx = 0;
@@ -598,7 +523,7 @@
       showHero(0);
       setInterval(() => { hIdx = (hIdx+1) % heroImgs.length; showHero(hIdx); }, 4500);
 
-      // Contact form → WhatsApp
+      // Contact form
       const contactForm = document.getElementById('contact-form');
       contactForm.addEventListener('submit', (ev) => {
         ev.preventDefault();
