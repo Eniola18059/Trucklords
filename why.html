@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
 <head>
@@ -77,6 +76,20 @@
       font-size:2rem; margin-bottom:1.5rem;
     }
 
+    .why{
+        color:#f6c100;
+        text-decoration: none;
+    }
+   .brand-logo {
+      height: 42px;
+      width: auto;
+    }
+
+    .mo-links{
+        color: white;
+        text-decoration: none;
+    }
+
     .reveal { opacity:0; transform:translateY(18px); transition:all .7s cubic-bezier(.2,.9,.2,1); }
     .reveal.show { opacity:1; transform:none; }
 
@@ -122,7 +135,10 @@
   <!-- HEADER -->
   <header class="site-header">
     <nav class="navbar navbar-expand-md container align-items-center" aria-label="Primary navigation">
-      <a class="brand navbar-brand mb-0" href="index.html">TRUCKLORD</a>
+      <a class="navbar-brand mb-0" href="#">
+        <img src="logo.jpg" alt="Trucklord Logo" class="brand-logo">
+      </a>
+
 
       <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav">
         <i class="bi bi-list" style="font-size:1.7rem;color:var(--nav-silver)"></i>
@@ -131,7 +147,7 @@
       <!-- Desktop Nav -->
       <div class="collapse navbar-collapse justify-content-center d-none d-md-flex">
         <ul class="navbar-nav gap-3">
-          <li class="nav-item"><a class="nav-link nav-link-custom active" href="why.html">Why Choose Us</a></li>
+          <li class="nav-item"><a class="nav-link nav-link-custom active" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html#about">About</a></li>
           <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html#gallery">Gallery</a></li>
           <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html#faq">FAQ</a></li>
@@ -158,12 +174,12 @@
       <div class="offcanvas-body">
         <!-- All links visible without scrolling -->
         <nav class="mobile-nav-links">
-          <a class="nav-link nav-link-custom active" href="why.html" data-bs-dismiss="offcanvas">Why Choose Us</a>
-          <a class="nav-link nav-link-custom" href="index.html#about" data-bs-dismiss="offcanvas">About</a>
-          <a class="nav-link nav-link-custom" href="index.html#gallery" data-bs-dismiss="offcanvas">Gallery</a>
-          <a class="nav-link nav-link-custom" href="index.html#faq" data-bs-dismiss="offcanvas">FAQ</a>
-          <a class="nav-link nav-link-custom" href="index.html#testimonials" data-bs-dismiss="offcanvas">Testimonials</a>
-          <a class="nav-link nav-link-custom" href="index.html#contact" data-bs-dismiss="offcanvas">Contact</a>
+          <a class="why" href="index.html">Home</a>
+          <a class="mo-links" href="index.html#about">About</a>
+          <a class="mo-links" href="index.html#gallery" >Gallery</a>
+          <a class="mo-links" href="index.html#faq" >FAQ</a>
+          <a class="mo-links" href="index.html#testimonials" >Testimonials</a>
+          <a class="mo-links" href="index.html#contact">Contact</a>
         </nav>
 
         <!-- Bottom actions (theme + CTA) -->
@@ -179,7 +195,7 @@
   <main class="container hero py-5">
 
     <!-- Hero Section -->
-    <section class="text-center mb-5 reveal">
+    <section style="padding-top: 20px;" class="text-center mb-5 reveal">
       <h1 class="display-5 fw-bold mb-4">Why Choose Trucklord?</h1>
       <p class="lead text-muted col-lg-8 mx-auto">
         We don’t just sell trucks — we rebuild them to perform like new, with transparency, reliability, and long-term support you can count on.
@@ -237,7 +253,7 @@
       <h3 class="mb-4">Ready to own a truck that’s built to last?</h3>
       <div class="d-flex justify-content-center gap-3 flex-wrap">
         <a href="https://wa.me/2349122652974" class="btn btn-brand btn-lg">Chat on WhatsApp Now</a>
-        <a href="index.html#contact" class="btn btn-ghost btn-lg">View Current Stock</a>
+        <a href="index.html#gallery" class="btn btn-ghost btn-lg">View Current Stock</a>
       </div>
     </section>
 
@@ -289,296 +305,4 @@
     reveals.forEach(el => obs.observe(el));
   </script>
 </body>
-=======
-<!doctype html>
-<html lang="en" data-bs-theme="dark">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Why Choose Trucklord — Refurbished Howo & Sino Trucks (Oshodi, Lagos)</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
-  <meta name="description" content="Why choose Trucklord? Fully refurbished Howo & Sino trucks, rigorous quality checks, nationwide delivery, transparent process & excellent after-sales support." />
-
-  <style>
-    :root{
-      --brand-yellow: #f6c100;
-      --nav-silver: #c0c0c0;
-      --muted-text-dark: #94a3b8;
-      --card-border: rgba(255,255,255,0.06);
-      --bg-dark-1: #03060a;
-      --bg-dark-2: #071226;
-      --glass: rgba(255,255,255,0.02);
-      --btn-radius: 12px;
-    }
-
-    html[data-bs-theme="dark"] { background: linear-gradient(180deg,var(--bg-dark-1),var(--bg-dark-2)); color: #eaf0f8; }
-    html[data-bs-theme="light"] { background: #f6f9fc; color: #07121b; }
-
-    /* Header */
-    .site-header {
-      position: fixed;
-      inset: 0 0 auto 0;
-      z-index: 1080;
-      backdrop-filter: blur(6px);
-      background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.06));
-    }
-    html[data-bs-theme="light"] .site-header { background: rgba(255,255,255,0.8); }
-
-    .brand { font-weight: 900; letter-spacing: 1px; color: var(--brand-yellow); text-decoration: none; }
-    .nav-link-custom { color: var(--nav-silver); font-weight:600; }
-    .nav-link-custom:hover, .nav-link-custom:focus, .nav-link-custom.active { color: #fff; }
-    .nav-link-custom.active { color: var(--brand-yellow); font-weight:700; }
-
-    .btn-brand {
-      background: var(--brand-yellow);
-      color: #07121b;
-      border-radius: var(--btn-radius);
-      font-weight: 700;
-      padding: 0.5rem 1rem;
-      border: 0;
-    }
-    .btn-ghost {
-      background: transparent;
-      border: 1px solid var(--card-border);
-      color: inherit;
-      border-radius: .6rem;
-    }
-
-    .hero { padding-top: 140px; }
-
-    .reason-card {
-      background: linear-gradient(180deg,rgba(255,255,255,0.015),rgba(255,255,255,0.01));
-      border:1px solid var(--card-border);
-      border-radius:12px;
-      padding:2rem;
-      height:100%;
-      transition: transform .4s ease, box-shadow .4s ease;
-    }
-    .reason-card:hover { transform: translateY(-8px); box-shadow: 0 16px 32px rgba(2,6,23,0.6); }
-    .reason-icon {
-      width:72px; height:72px; background:var(--brand-yellow); color:#07121b;
-      border-radius:50%; display:flex; align-items:center; justify-content:center;
-      font-size:2rem; margin-bottom:1.5rem;
-    }
-
-    .reveal { opacity:0; transform:translateY(18px); transition:all .7s cubic-bezier(.2,.9,.2,1); }
-    .reveal.show { opacity:1; transform:none; }
-
-    .wa-fab{
-      position:fixed; right:1rem; bottom:1rem; z-index:1095;
-      border-radius:999px; box-shadow:0 8px 24px rgba(2,6,23,0.4);
-      padding:12px 16px; display:inline-flex; align-items:center; gap:10px; font-weight:700;
-      background:#25D366; color:#02111a;
-    }
-
-    footer{ border-top:1px solid var(--card-border); margin-top:4rem; padding:2rem 0; }
-
-    /* MOBILE OFFCANVAS: NO SCROLL — fits all links perfectly */
-    @media (max-width: 991.98px) {
-      .offcanvas {
-        height: 100vh !important;
-        max-height: 100vh;
-      }
-      .offcanvas-body {
-        overflow-y: hidden !important;
-        padding: 2rem 1.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-      .mobile-nav-links {
-        display: flex;
-        flex-direction: column;
-        gap: 1.8rem;
-        font-size: 1.4rem;
-        margin-bottom: 3rem;
-      }
-      .mobile-bottom-actions {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- HEADER -->
-  <header class="site-header">
-    <nav class="navbar navbar-expand-md container align-items-center" aria-label="Primary navigation">
-      <a class="brand navbar-brand mb-0" href="index.html">TRUCKLORD</a>
-
-      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav">
-        <i class="bi bi-list" style="font-size:1.7rem;color:var(--nav-silver)"></i>
-      </button>
-
-      <!-- Desktop Nav -->
-      <div class="collapse navbar-collapse justify-content-center d-none d-md-flex">
-        <ul class="navbar-nav gap-3">
-          <li class="nav-item"><a class="nav-link nav-link-custom active" href="why.html">Why Choose Us</a></li>
-          <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html#about">About</a></li>
-          <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html#gallery">Gallery</a></li>
-          <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html#faq">FAQ</a></li>
-          <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html#testimonials">Testimonials</a></li>
-          <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html#contact">Contact</a></li>
-        </ul>
-      </div>
-
-      <div class="d-none d-md-flex align-items-center gap-2 ms-auto">
-        <button id="theme-toggle" class="btn btn-ghost px-3 py-2" title="Toggle light/dark">
-          <i id="theme-icon" class="fa fa-moon" aria-hidden="true"></i>
-        </button>
-        <a href="why.html" class="btn btn-brand">Why Choose Us</a>
-      </div>
-    </nav>
-
-    <!-- Mobile Offcanvas Menu – NO SCROLLING -->
-    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel">
-      <div class="offcanvas-header border-bottom">
-        <h5 id="mobileNavLabel" class="mb-0 fw-bold text-warning">TRUCKLORD</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-
-      <div class="offcanvas-body">
-        <!-- All links visible without scrolling -->
-        <nav class="mobile-nav-links">
-          <a class="nav-link nav-link-custom active" href="why.html" data-bs-dismiss="offcanvas">Why Choose Us</a>
-          <a class="nav-link nav-link-custom" href="index.html#about" data-bs-dismiss="offcanvas">About</a>
-          <a class="nav-link nav-link-custom" href="index.html#gallery" data-bs-dismiss="offcanvas">Gallery</a>
-          <a class="nav-link nav-link-custom" href="index.html#faq" data-bs-dismiss="offcanvas">FAQ</a>
-          <a class="nav-link nav-link-custom" href="index.html#testimonials" data-bs-dismiss="offcanvas">Testimonials</a>
-          <a class="nav-link nav-link-custom" href="index.html#contact" data-bs-dismiss="offcanvas">Contact</a>
-        </nav>
-
-        <!-- Bottom actions (theme + CTA) -->
-        <div class="mobile-bottom-actions">
-          <button id="mobile-theme-toggle" class="btn btn-outline-light w-100">Toggle Theme</button>
-          <a class="btn btn-brand w-100" href="https://wa.me/2349122652974" target="_blank">Chat on WhatsApp</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- MAIN CONTENT -->
-  <main class="container hero py-5">
-
-    <!-- Hero Section -->
-    <section class="text-center mb-5 reveal">
-      <h1 class="display-5 fw-bold mb-4">Why Choose Trucklord?</h1>
-      <p class="lead text-muted col-lg-8 mx-auto">
-        We don’t just sell trucks — we rebuild them to perform like new, with transparency, reliability, and long-term support you can count on.
-      </p>
-    </section>
-
-    <!-- Reasons Grid -->
-    <section class="row g-4 mb-5">
-      <div class="col-md-6 col-lg-4 reveal">
-        <div class="reason-card text-center">
-          <div class="reason-icon mx-auto"><i class="bi bi-wrench-adjustable"></i></div>
-          <h4>Full Professional Refurbishment</h4>
-          <p class="text-muted">Every truck undergoes complete mechanical, electrical, chassis and cosmetic restoration by experienced technicians.</p>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4 reveal">
-        <div class="reason-card text-center">
-          <div class="reason-icon mx-auto"><i class="bi bi-shield-check"></i></div>
-          <h4>Rigorous Quality Checks</h4>
-          <p class="text-muted">Multi-point inspection + road testing on every vehicle. Only the best leave our yard.</p>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4 reveal">
-        <div class="reason-card text-center">
-          <div class="reason-icon mx-auto"><i class="bi bi-truck"></i></div>
-          <h4>Nationwide Insured Delivery</h4>
-          <p class="text-muted">We deliver anywhere in Nigeria with fully insured logistics partners.</p>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4 reveal">
-        <div class="reason-card text-center">
-          <div class="reason-icon mx-auto"><i class="bi bi-camera-video"></i></div>
-          <h4>Live Video Walk-Throughs</h4>
-          <p class="text-muted">Can’t visit Oshodi? We provide detailed live video inspections and honest reports.</p>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4 reveal">
-        <div class="reason-card text-center">
-          <div class="reason-icon mx-auto"><i class="bi bi-headset"></i></div>
-          <h4>Ongoing After-Sales Support</h4>
-          <p class="text-muted">Parts sourcing, maintenance advice, and technical support long after the sale.</p>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-4 reveal">
-        <div class="reason-card text-center">
-          <div class="reason-icon mx-auto"><i class="bi bi-currency-exchange"></i></div>
-          <h4>Fair & Transparent Pricing</h4>
-          <p class="text-muted">No hidden fees. Clear breakdown of work done and competitive prices.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="text-center py-5 reveal">
-      <h3 class="mb-4">Ready to own a truck that’s built to last?</h3>
-      <div class="d-flex justify-content-center gap-3 flex-wrap">
-        <a href="https://wa.me/2349122652974" class="btn btn-brand btn-lg">Chat on WhatsApp Now</a>
-        <a href="index.html#contact" class="btn btn-ghost btn-lg">View Current Stock</a>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
-      <div>
-        <div class="fw-bold">TRUCKLORD</div>
-        <div class="small text-muted">© Trucklord — Refurbished Trucks • Oshodi, Lagos</div>
-      </div>
-      <div class="d-flex gap-3">
-        <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="text-decoration-none text-muted"><i class="fab fa-twitter"></i></a>
-        <a href="https://wa.me/2349122652974" target="_blank" aria-label="WhatsApp" class="text-decoration-none text-muted"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="text-decoration-none text-muted"><i class="fab fa-facebook"></i></a>
-      </div>
-      <div class="small text-muted">Built by Stella</div>
-    </div>
-  </footer>
-
-  <!-- WhatsApp FAB -->
-  <a class="wa-fab" href="https://wa.me/2349122652974" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-    <i class="fab fa-whatsapp" aria-hidden="true"></i>
-    <span class="d-none d-md-inline">Chat Trucklord</span>
-  </a>
-
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Theme toggle
-    const htmlEl = document.documentElement;
-    const THEME_KEY = 'trucklord-theme';
-    const saved = localStorage.getItem(THEME_KEY) || 'dark';
-    function applyTheme(theme){
-      htmlEl.setAttribute('data-bs-theme', theme);
-      localStorage.setItem(THEME_KEY, theme);
-      document.getElementById('theme-icon').className = theme === 'dark' ? 'fa fa-moon' : 'fa fa-sun';
-    }
-    applyTheme(saved);
-    document.getElementById('theme-toggle')?.addEventListener('click', () => applyTheme(htmlEl.getAttribute('data-bs-theme')==='dark' ? 'light' : 'dark'));
-    document.getElementById('mobile-theme-toggle')?.addEventListener('click', () => applyTheme(htmlEl.getAttribute('data-bs-theme')==='dark' ? 'light' : 'dark'));
-
-    // Reveal on scroll
-    const reveals = document.querySelectorAll('.reveal');
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('show'); });
-    }, { threshold: 0.12 });
-    reveals.forEach(el => obs.observe(el));
-  </script>
-</body>
->>>>>>> 4ddfb5879a98fb9f4025611d0e8b1f8094b543cf
 </html>
